@@ -1,0 +1,79 @@
+name: network-config
+x-type: hlfv1
+description: Custom generated network with ChainRider.io
+version: '1.0'
+channels:
+  echannel:
+    orderers:
+      - orderer0.teco.com
+    peers:
+      peer0.machine1.teco.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+      peer1.machine1.teco.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+    chaincodes: []
+organizations:
+  supp:
+    secret: bc272abaec4ea3a0a5d34c04f683bcf7
+    mspid: suppMSP
+    peers:
+      - peer0.machine1.teco.com
+      - peer1.machine1.teco.com
+    certificateAuthorities:
+      - ca.machine1.teco.com
+    adminPrivateKey:
+      path: >-
+        ./artifacts/channel/crypto-config/peerOrganizations/teco.com/users/Admin@teco.com/msp/keystore/f1f741afdf24d59b3fddda8a3db2906f445c9b3e662d2aa2908efa2043224237_sk
+    signedCert:
+      path: >-
+        ./artifacts/channel/crypto-config/peerOrganizations/teco.com/users/Admin@teco.com/msp/signcerts/Admin@teco.com-cert.pem
+orderers:
+  orderer0.teco.com:
+    mspid: OrdererMSP
+    url: 'grpcs://orderer0.teco.com:7050'
+    grpcOptions:
+      ssl-target-name-override: orderer0.teco.com
+    tlsCACerts:
+      path: >-
+        ./artifacts/channel/crypto-config/ordererOrganizations/teco.com/orderers/orderer0.teco.com/tls/ca.crt
+    adminPrivateKey:
+      path: >-
+        ./artifacts/channel/crypto-config/ordererOrganizations/teco.com/users/Admin@teco.com/msp/keystore/46ef2e8e5bbf9eb341fcdc73b3886a3062533aedb124bdf2ce61f4f8cdb71512_sk
+    signedCert:
+      path: >-
+        ./artifacts/channel/crypto-config/ordererOrganizations/teco.com/users/Admin@teco.com/msp/signcerts/Admin@teco.com-cert.pem
+peers:
+  peer0.machine1.teco.com:
+    url: 'grpcs://peer0.machine1.teco.com:7051'
+    eventUrl: 'grpcs://peer0.machine1.teco.com:7053'
+    grpcOptions:
+      ssl-target-name-override: peer0.machine1.teco.com
+    tlsCACerts:
+      path: >-
+        ./artifacts/channel/crypto-config/peerOrganizations/teco.com/peers/peer0.machine1.teco.com/tls/ca.crt
+  peer1.machine1.teco.com:
+    url: 'grpcs://peer1.machine1.teco.com:8051'
+    eventUrl: 'grpcs://peer1.machine1.teco.com:8053'
+    grpcOptions:
+      ssl-target-name-override: peer1.machine1.teco.com
+    tlsCACerts:
+      path: >-
+        ./artifacts/channel/crypto-config/peerOrganizations/teco.com/peers/peer1.machine1.teco.com/tls/ca.crt
+certificateAuthorities:
+  ca.machine1.teco.com:
+    url: 'https://ca.machine1.teco.com:7054'
+    httpOptions:
+      verify: false
+    tlsCACerts:
+      path: >-
+        ./artifacts/channel/crypto-config/peerOrganizations/teco.com/ca/ca.teco.com-cert.pem
+    registrar:
+      - enrollId: admin
+        enrollSecret: adminpw
+        caName: ca.machine1.teco.com

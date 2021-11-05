@@ -1,0 +1,16 @@
+OrdererOrgs:
+  - Name: Orderer
+    Domain: teco.com
+    Specs:
+      - Hostname: orderer0
+PeerOrgs:
+  - Name: supp
+    Domain: teco.com
+    Specs:
+      - Hostname: peer0.machine1
+      - Hostname: peer1.machine1
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+    Users:
+      Count: 1

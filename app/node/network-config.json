@@ -1,0 +1,51 @@
+{
+	"network-config": {
+		"orderer1": {
+			"url": "grpcs://172.19.108.243:7010",
+			"server-hostname": "orderer1.teco.com",
+			"tls_cacerts": "../../keyfiles/ordererOrganizations/teco.com/orderers/orderer1.teco.com/tls/ca.crt"
+		},
+		"supply": {
+			"name": "supply.teco.com",
+			"mspid": "supply-teco-com",
+			"ca": "https://172.19.108.243:7000",
+			"peers": {
+				"peer1": {
+					"requests": "grpcs://172.19.108.243:7002",
+					"server-hostname": "peer1.supply.teco.com",
+					"tls_cacerts": "../../keyfiles/peerOrganizations/supply.teco.com/peers/peer1.supply.teco.com/tls/ca.crt"
+				},
+				"peer2": {
+					"requests": "grpcs://172.19.108.243:7003",
+					"server-hostname": "peer2.supply.teco.com",
+					"tls_cacerts": "../../keyfiles/peerOrganizations/supply.teco.com/peers/peer2.supply.teco.com/tls/ca.crt"
+				}
+			},
+			"admin": {
+				"key": "../../keyfiles/peerOrganizations/supply.teco.com/users/Admin@supply.teco.com/msp/keystore",
+				"cert": "../../keyfiles/peerOrganizations/supply.teco.com/users/Admin@supply.teco.com/msp/signcerts"
+			}
+		},
+		"delivery": {
+			"name": "delivery.teco.com",
+			"mspid": "delivery-teco-com",
+			"ca": "https://172.19.108.243:7001",
+			"peers": {
+				"peer1": {
+					"requests": "grpcs://172.19.108.243:7004",
+					"server-hostname": "peer1.delivery.teco.com",
+					"tls_cacerts": "../../keyfiles/peerOrganizations/delivery.teco.com/peers/peer1.delivery.teco.com/tls/ca.crt"
+				},
+				"peer2": {
+					"requests": "grpcs://172.19.108.243:7005",
+					"server-hostname": "peer2.delivery.teco.com",
+					"tls_cacerts": "../../keyfiles/peerOrganizations/delivery.teco.com/peers/peer2.delivery.teco.com/tls/ca.crt"
+				}
+			},
+			"admin": {
+				"key": "../../keyfiles/peerOrganizations/delivery.teco.com/users/Admin@delivery.teco.com/msp/keystore",
+				"cert": "../../keyfiles/peerOrganizations/delivery.teco.com/users/Admin@delivery.teco.com/msp/signcerts"
+			}
+		}
+	}
+}
